@@ -61,7 +61,7 @@ curl -sSL https://raw.githubusercontent.com/seanorama/ambari-bootstrap/master/am
 export install_ambari_server=true
 curl -sSL https://raw.githubusercontent.com/seanorama/ambari-bootstrap/master/ambari-bootstrap.sh | sudo -E sh
 yum install -y git
-git clone https://github.com/abajwa-hw/solr-stack.git /var/lib/ambari-server/resources/stacks/HDP/2.3/services/SOLR
+git clone https://github.com/abenoualy/solrcloud.gitt /var/lib/ambari-server/resources/stacks/HDP/2.5/services/SOLR
 ```
 
 
@@ -186,8 +186,8 @@ export JAVA_HOME=<JAVA_HOME>
 ```
 export SERVICE=SOLR
 export PASSWORD=admin
-export AMBARI_HOST=sandbox.hortonworks.com
-export CLUSTER=Sandbox
+export AMBARI_HOST=ambari.server.local
+export CLUSTER=
 
 #get service status
 curl -u admin:$PASSWORD -i -H 'X-Requested-By: ambari' -X GET http://$AMBARI_HOST:8080/api/v1/clusters/$CLUSTER/services/$SERVICE
