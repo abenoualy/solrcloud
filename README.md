@@ -2,38 +2,33 @@
 Ambari service for easily installing and managing Solr/HdpSearch on both existing HDP clusters or fresh installs via blueprints
 
 Limitations:
-- This is not an officially supported service and *is not meant to be deployed in production systems*. It is only meant for testing demo/purposes
+- This is not an officially supported service.
 - It does not support Ambari/HDP upgrade process and will cause upgrade problems if not removed prior to upgrade
 - Not tested on secured clusters
 
-
 Steps:
 
-- Download HDP 2.4 sandbox VM image (Hortonworks_sanbox_with_hdp_2_4_vmware.ova) from [Hortonworks website](http://hortonworks.com/products/hortonworks-sandbox/)
-- Import Hortonworks_sanbox_with_hdp_2_4_vmware.ova into VMWare and set the VM memory size to 8GB
-- Now start the VM
-- After it boots up, find the IP address of the VM and add an entry into your machines hosts file e.g.
+- 
 ```
 192.168.191.241 sandbox.hortonworks.com sandbox    
 ```
-- Connect to the VM via SSH (password hadoop) and start Ambari server
+- Connect to the  via SSH (password hadoop) and start Ambari server
 ```
-ssh root@sandbox.hortonworks.com
-/root/start_ambari.sh
-```
+ssh root@ambari-server
+
 
 - To deploy the Solr stack, run below
 ```
 VERSION=`hdp-select status hadoop-client | sed 's/hadoop-client - \([0-9]\.[0-9]\).*/\1/'`
-sudo git clone https://github.com/abajwa-hw/solr-stack.git /var/lib/ambari-server/resources/stacks/HDP/$VERSION/services/SOLR
+sudo git clone https://github.com/abenoualy/solrcloud.git  /var/lib/ambari-server/resources/stacks/HDP/$VERSION/services/SOLR
 ```
 
 - Restart Ambari
 ```
-#on sandbox
+#on ambari server 
 sudo service ambari restart
 
-#on non-sandbox
+#on ambari server
 sudo service ambari-server restart
 
 ```
@@ -53,7 +48,7 @@ On bottom left -> Actions -> Add service -> check Solr service -> Next -> Next -
 
 #### Option 2: Automated deployment of fresh cluster via blueprint
 
-- Bring up 4 VMs imaged with RHEL/CentOS 6.x (e.g. node1-4 in this case)
+- Bring up 4 VMs imaged with RHEL/CentOS 7.x (e.g. node1-4 in this case)
 
 - On non-ambari nodes, install ambari-agents and point them to ambari node (e.g. node1 in this case)
 ```
