@@ -8,21 +8,18 @@ Limitations:
 
 Steps:
 
-- 
-```
-192.168.191.241 sandbox.hortonworks.com sandbox    
-```
+
 - Connect to the  via SSH (password hadoop) and start Ambari server
 ```
 ssh root@ambari-server
 
 
 - To deploy the Solr stack, run below
+
 ```
 VERSION=`hdp-select status hadoop-client | sed 's/hadoop-client - \([0-9]\.[0-9]\).*/\1/'`
 sudo git clone https://github.com/abenoualy/solrcloud.git  /var/lib/ambari-server/resources/stacks/HDP/$VERSION/services/SOLR
 ```
-
 - Restart Ambari
 ```
 #on ambari server 
