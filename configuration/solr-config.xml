@@ -12,13 +12,6 @@
     <description>Whether Solr should be started in Cloud mode</description>
   </property>  
   
-
-  <property>
-    <name>solr.demo_mode</name>
-    <value>false</value>
-    <description>Whether Solr should be configured for HDP demos. If true, a collection named tweets will be created using data_driven schema</description>
-  </property>  
-    
   <property>
     <name>solr.dir</name>
     <value>/opt/solr</value>
@@ -27,14 +20,14 @@
 
   <property>
     <name>solr.download.location</name>
-    <value>https://archive.apache.org/dist/lucene/solr/5.3.0/solr-5.3.0.tgz</value>
-    <description>Location to download Solr from (.tgz format). Set this to HDPSEARCH to download HDPSearch from yum repo instead</description>
+    <value>http://apache.mediamirrors.org/lucene/solr/6.5.0/solr-6.5.0.tgz</value>
+    <description>Location to download Solr from apache</description>
   </property>     
   
 
   <property>
     <name>solr.znode</name>
-    <value>/solr</value>
+    <value>/ranger_audits</value>
     <description>Zookeeper znode (only used if cloudmode is true)</description>
   </property>  
 
@@ -54,7 +47,7 @@
 
   <property>
     <name>solr.datadir</name>
-    <value> </value>
+    <value>/opt/ranger_audit_server</value>
     <description>(Optional) Dir for Solr data where solr.xml and zoo.cfg will be created. If empty, will default to SOLR_HOME/server/solr</description>
   </property> 
   

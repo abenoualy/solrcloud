@@ -12,16 +12,10 @@
 
   <property>
     <name>solr.port</name>
-    <value>8983</value>
+    <value>6083</value>
     <description>Solr port</description>
   </property> 
   
-  <property>
-    <name>solr.ssl</name>
-    <value>false</value>
-    <description>SSL not yet supported</description>
-  </property>
-    
   <property>
     <name>solr.log.dir</name>
     <value>/var/log/solr</value>
